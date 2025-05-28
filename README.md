@@ -32,20 +32,36 @@ Click the **"Use this template"** button on GitHub to create a new repository ba
 1. Copy the example environment file and configure as needed: **.env.example** in **.env**
 2. Change the module name in **go.mod** to match your project name. <br>
 
-example:
-```sh
-    go mod edit -module github.com/yourusername/yourprojectname
-```
+    example
+    ```sh
+      go mod edit -module github.com/yourusername/yourprojectname
+    ```
 
-3. Install dependencies:
+3. Update all occurrences of the template name in the codebase: replace `github.com/yourusername/yourprojectname` with your project name. <br><br>
 
-```sh
-    go mod tidy
-```
+    linux
+    ```sh
+      find . -type f -name "*.go" -exec sed -i 's|go-hexagonal-template|github.com/yourusername/yourprojectname|g' {} +
+    ```
+    
+    macOS
+    ```sh
+      find . -type f -name "*.go" -exec sed -i '' 's|go-hexagonal-template|github.com/yourusername/yourprojectname|g' {} +
+    ```
+    windows
+    ```sh
+      Get-ChildItem -Recurse -Include *.go | ForEach-Object { (Get-Content $_.FullName) -replace 'go-hexagonal-template', 'github.com/yourusername/yourprojectname' | Set-Content $_.FullName }
+    ```
+
+4. Install dependencies:
+
+    ```sh
+      go mod tidy
+    ```
 
 
-4. Running the Application
+5. Running the Application
 
-```sh
-    go run cmd/main.go
-```
+    ```sh
+      go run cmd/main.go
+    ```
