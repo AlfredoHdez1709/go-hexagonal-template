@@ -26,21 +26,25 @@ This project follows the hexagonal architecture, ensuring a clear separation bet
 
 ### Installation
 
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/your-org/go-hexagonal-template.git
-   cd go-hexagonal-template
+Click the **"Use this template"** button on GitHub to create a new repository based on this template, or follow these steps:
 
-Copy the example environment file and configure as needed:
-cp .env.example .env
-Install dependencies:
+
+1. Copy the example environment file and configure as needed: **.env.example** in **.env**
+2. Change the module name in **go.mod** to match your project name. <br>
+
+example:
+```sh
+    go mod edit -module github.com/yourusername/yourprojectname
+```
+
+3. Install dependencies:
 
 ```sh
     go mod tidy
 ```
 
 
-Running the Application
+4. Running the Application
 
 ```sh
     go run cmd/main.go
