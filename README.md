@@ -15,7 +15,6 @@ This project follows the hexagonal architecture, ensuring a clear separation bet
 - Environment-based configuration
 - Structured logging with Zap
 - Fiber HTTP server
-- Dependency injection for testability
 
 ## Getting Started
 
