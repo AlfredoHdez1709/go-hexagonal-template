@@ -2,10 +2,10 @@ package server
 
 import (
 	"fmt"
+	"github.com/gofiber/fiber/v2/log"
 	"go-hexagonal-template/internal/adapters/http/routes"
 	"go-hexagonal-template/internal/core/ports"
 	"go-hexagonal-template/internal/infrastructure/driven/fiber"
-	"go-hexagonal-template/internal/infrastructure/driven/logger"
 )
 
 type Server struct {
@@ -36,6 +36,6 @@ func (server *Server) Start(port string) {
 
 	err := server.Fiber.Server.Listen(fmt.Sprintf(":%s", port))
 	if err != nil {
-		logger.Logger.Fatal(err)
+		log.Fatalf(err.Error())
 	}
 }

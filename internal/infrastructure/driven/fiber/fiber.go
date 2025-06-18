@@ -3,7 +3,6 @@ package fiber
 import (
 	"errors"
 	"fmt"
-	"github.com/bytedance/sonic"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	errorsConst "go-hexagonal-template/internal/infrastructure/constants/errors"
@@ -15,8 +14,6 @@ type FiberServer struct {
 
 func NewFiberServer() *FiberServer {
 	server := fiber.New(fiber.Config{
-		JSONEncoder: sonic.Marshal,
-		JSONDecoder: sonic.Unmarshal,
 		ErrorHandler: func(ctx *fiber.Ctx, err error) error {
 			code := fiber.StatusInternalServerError
 			var e *fiber.Error

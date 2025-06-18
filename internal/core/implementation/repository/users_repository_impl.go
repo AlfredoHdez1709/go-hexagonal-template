@@ -2,9 +2,9 @@ package repository
 
 import (
 	"context"
+	"github.com/gofiber/fiber/v2/log"
 	"go-hexagonal-template/internal/core/domain"
 	"go-hexagonal-template/internal/core/ports"
-	"go-hexagonal-template/internal/infrastructure/driven/logger"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -35,7 +35,7 @@ func (u UsersRepository) GetUsers(ctx context.Context) ([]domain.User, error) {
 	defer func(curs *mongo.Cursor, ctx context.Context) {
 		err := curs.Close(ctx)
 		if err != nil {
-			logger.Logger.Fatal(err)
+			log.Fatalf("failed to close cursor, %v", err)
 		}
 	}(curs, nil)
 	var users []domain.User
